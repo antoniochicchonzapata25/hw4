@@ -1,0 +1,54 @@
+# ---------- Secrets / local configuration ----------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+
+# ---------- Local-only data pack (never committed) ----------
+# data/campus_customs.db and data/products/*.jpg
+data/
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# ---------- Python ----------
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# ---------- Node / frontend build ----------
+node_modules/
+frontend/dist/
+dist/
+dist-ssr/
+*.local
+*.tsbuildinfo
+.vite/
+
+# ---------- Audit-trail write leftovers (the trail itself IS committed) ----------
+output/.audit_trail.*.tmp
+output/audit_trail.corrupt-*.json
+
+# ---------- Logs / OS / editor ----------
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+*.swo
+
+# ---------- Local tooling ----------
+.claude/

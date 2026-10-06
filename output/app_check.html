@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Campus Customs: App Check (Problem 11)</title>
+    <style>
+      :root {
+        --navy: #00356b;
+        --night: #0a1b33;
+        --slate: #59697e;
+        --line: #dae1ea;
+        --paper: #fbf8f1;
+        --gold: #d2a43a;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+        line-height: 1.55;
+        color: #0f1a2b;
+        background: #f4f6f9;
+      }
+      header {
+        background: var(--night);
+        color: #f7f1e3;
+        padding: 28px 24px 24px;
+      }
+      header h1 {
+        margin: 0 0 6px;
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: 1.9rem;
+      }
+      header p {
+        margin: 0;
+        color: #c9d3df;
+        max-width: 60rem;
+      }
+      main {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 28px 24px 48px;
+      }
+      section {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 22px 22px 18px;
+        margin-bottom: 28px;
+        box-shadow: 0 2px 8px rgba(10, 27, 51, 0.05);
+      }
+      h2 {
+        margin: 0 0 14px;
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: 1.45rem;
+        color: var(--night);
+      }
+      h2 span {
+        display: inline-block;
+        margin-right: 8px;
+        padding: 2px 10px;
+        border-radius: 999px;
+        background: var(--navy);
+        color: #fff;
+        font-family: system-ui, sans-serif;
+        font-size: 0.85rem;
+        vertical-align: 3px;
+      }
+      figure {
+        margin: 0;
+      }
+      figure img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+      }
+      figcaption {
+        margin-top: 12px;
+        padding: 10px 14px;
+        border-left: 4px solid var(--gold);
+        background: var(--paper);
+        border-radius: 0 8px 8px 0;
+        font-size: 0.98rem;
+      }
+      footer {
+        text-align: center;
+        color: var(--slate);
+        font-size: 0.85rem;
+        padding-bottom: 28px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Campus Customs: App Check</h1>
+      <p>
+        Screenshots of the running site: the React + Vite frontend talking to the real FastAPI backend,
+        the SQLite catalogue/inventory database and the PydanticAI shopping agent ("Dan").
+      </p>
+    </header>
+
+    <main>
+      <section id="check-1">
+        <h2><span>Check 1</span>Chat checking inventory</h2>
+        <figure>
+          <img
+            src="app_check_images/inventory.png"
+            alt="Chat on the Basic Hoodie Big Yale product page: the assistant answers $68.00 and 2 in XL, next to the page's size grid showing XL Only 2 left"
+          />
+          <figcaption>
+            On the <strong>Basic Hoodie Big Yale</strong> product page, the shopper asked “How much is this hoodie, and how
+            many do you have in XL?”. The chatbot answered <strong>“$68.00, and we have 2 in XL”</strong>, which matches the
+            database exactly (catalogue price 68.0; inventory XL = 2) and the page’s own size grid
+            (<strong>XL · Only 2 left</strong>). It understood “this hoodie” from the page context and looked the values up
+            with its price and stock tools instead of guessing.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section id="check-2">
+        <h2><span>Check 2</span>Dynamic search-result cards</h2>
+        <figure>
+          <img
+            src="app_check_images/search_cards.png"
+            alt="After asking What hoodies do you have?, a From your chat panel shows 8 hoodie product cards on the page and the same products as compact cards in the chat"
+          />
+          <figcaption>
+            Asking <strong>“What hoodies do you have?”</strong> made the agent search the catalogue (27 hoodies) and return
+            8 structured matches. These appear dynamically as product cards in a <strong>“From your chat”</strong> panel on the
+            page (for example Basic Hoodie Big Yale $68.00, Brooks Brothers Double Knit Full Zip Hoodie Yale $88.00, Champion
+            Full Zip Hood $88.00) and as compact cards in the chat, all built from real catalogue data. Clicking the Champion
+            Full Zip Hood card opened its existing product-detail page (<code>/products/champion-full-zip-hood</code>).
+          </figcaption>
+        </figure>
+      </section>
+
+      <section id="check-3">
+        <h2><span>Check 3</span>Problem 9 usability feature: shopping bag</h2>
+        <figure>
+          <img
+            src="app_check_images/bag.png"
+            alt="Your bag page with Basic Hoodie Big Yale XL x2, Champion Reverse Weave Hoodie 1 M x1 and Benjamin Franklin Fleece Jacket S x1, subtotal $302.00 and a notice that no order was placed"
+          />
+          <figcaption>
+            Using the Problem 9 <strong>shopping bag</strong>, three items were added from their product pages with a chosen
+            size and quantity (Basic Hoodie Big Yale XL ×2, Champion Reverse Weave Hoodie 1 M ×1, Benjamin Franklin Fleece
+            Jacket S ×1). The bag shows each size and quantity, live catalogue prices and a correct
+            <strong>subtotal of $302.00</strong> (2×$68 + $68 + $98), with a 4-item badge in the header. The notice makes clear
+            it is not a checkout: no order is placed and nothing is charged.
+          </figcaption>
+        </figure>
+      </section>
+    </main>
+
+    <footer>Campus Customs · MGT 409 Homework 4 · Problem 11</footer>
+  </body>
+</html>

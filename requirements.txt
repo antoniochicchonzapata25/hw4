@@ -1,0 +1,5 @@
+# Campus Customs backend (Python 3.12+)
+fastapi                   # web API: products, images, auth, chat
+uvicorn[standard]         # ASGI server: run from backend/ with `uvicorn main:app --reload --port 8000`
+pydantic-ai-slim[openai]  # agent framework + OpenAI client (used through the Portkey gateway)
+python-dotenv             # loads PORTKEY_API_KEY (and optional settings) from .env
